@@ -1,0 +1,23 @@
+react는 당신이 기기에 쓰는 요소들을 다 생성하는 것이다.
+자바스크립트와 함께 그것들을 만들고 그것들을 HTML로 집어넣는다.
+
+react는 app.js component를 ElementById 내부에 넣는다.
+
+소스코드에는 빈 index.html파일일 것이다.
+
+빈 HTML을 load하고 내가 작성해 두었던 component들을 react가 HTML에 밀어넣게 된다.
+즉 이것은 빈 HTML파일에 내가 작성한 것들을 밀어넣어주는 기계라고도 이해 할 수 있을 것이다.
+
+virtual DOM 이라는 것이 있는데 여기서 비츄얼(virtual)은 존재하지 않는다는 뜻이다.
+가상의 DOM에 Hello!!를 입력하게 되면 react는 가상의 DOM에 그것을 밀어넣어 줄 것이다.
+
+존재하지 않지만 존재하는것 그것이 react 이다.
+
+
+react는 결국 virtual DOM(가상의 돔)에서 component들을 index.html에 집어넣은 다음
+그것을 비쳐주는 기계라고 이해 할 수 있을 것 같다.
+
+conponent는 기본적으로 HTML을 반환하는 함수이다.
+<App /> << 이런것들을 JSX javascript와 html사이의 관계이다.
+react에 특화된 개념이다.
+

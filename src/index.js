@@ -1,17 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import App from './App'; // 같은 directory안에 있는 App이라는 함수를 불러온다.
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>, 
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

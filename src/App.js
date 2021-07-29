@@ -1,25 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import Potato from "./Potato";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="App">hello!!!!!</div>
+      <Potato />
     </div>
   );
 }
 
-export default App;
+export default App; // 앱이라는 함수를 내보낸다.
