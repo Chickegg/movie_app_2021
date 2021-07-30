@@ -21,3 +21,13 @@ conponent는 기본적으로 HTML을 반환하는 함수이다.
 <App /> << 이런것들을 JSX javascript와 html사이의 관계이다.
 react에 특화된 개념이다.
 
+// Food component에 정보를 보내는 방법 <Food name="kimchi" />
+(kimchi 라는 value로 prop name을 줬다.) 
+name => favorite로 바꾸기.
+
+react masic을 이용해서 props를 사용할 것이다. 
+something ={true} papapapa ={["hello", 1, 2, 3, 4, true]} 모든것이 가능하다.
+Food(props) 를 하게되면 <Food fav="kimchi" /> 에서 fav를 받아온다.
+즉 propt는 Food안의 object라고 할 수있다. 
+만일 여러개의 element가 있다면? {fav}로 해주면된다.
+object안의 fav라는 것을 불러오는 것이다.
