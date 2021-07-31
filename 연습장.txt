@@ -31,3 +31,37 @@ Food(props) 를 하게되면 <Food fav="kimchi" /> 에서 fav를 받아온다.
 즉 propt는 Food안의 object라고 할 수있다. 
 만일 여러개의 element가 있다면? {fav}로 해주면된다.
 object안의 fav라는 것을 불러오는 것이다.
+
+
+-----
+웹사이트에 동적 데이터를 추가하는방법
+1.데이터가 있다고 시뮬레이션한다.
+2.함수를 만든다.
+3.map은 array의 각 iteml에서 function을 실행하는 array를 가지는 javaScript function이며그 function의 result를 갖는 array를 나한테 준다.
+4.map 메서드를 사용할때 <Food name={array.name} picture={array.image} /> 를 하게되면 Food 함수가 실행되는데
+이 때 매개변수는 key값을 name과 picture을 가지는 object로 주어지는데 그렇기 때문에 {name}이라고 key값을 입력해줘야 한다
+5.즉 props를 연다 { name 을 찾는다 그리고 닫는다. }  이렇게 되는거다. 같은방법은 props.name이 있을 것이다.
+
+
+-----
+console.log를 해보면 기본적인 react Component들이 나온다.
+이때 각각의 list들의 child들은 unique한 key prop을 가져야한다.
+즉 각각의 element들은 유일성을 가져야한다.
+그러므로 각각의 iteml에 id값을 지정해준다.
+그리고 key.prop 은 Array.id 라고 해준다. [예를 들어 Array.id라고 한것이다.]
+
+---
+우리가 원하는 props가 우리가 가지고있는 props인지, 체크하는 방법
+바로 rating 이다.
+npm i prop-types [내가 전달받은 props가 내가 원하는 props인지를 확인해 주는 것]
+
+import PropTypes from "prop-types" 로 받아오고
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  rating: PropTypes.string.isRequired
+} 이렇게 하게되면
+이부분에서 나는 string이 아니고 int로 해줬기때문에 Warning이 뜰것이다.
+즉 나의 실수를 알 수 있게 된다.
+// 이때 propTypes라고만 지어야한다❗ 귀찮고 크기가 매욱 커질수도 있지만 유용할 것이다.👍
