@@ -1,0 +1,98 @@
+3-0 Class Component와 State💥
+class는 javascript에서 왔다.
+
+extends class
+class React Component는 return을 가지지 않는다.
+function이 아니기 때문이다. 
+
+function component와 class component의 차이점❓
+Function component는 function이고 뭔가를 return한다. 그리고 screen에 표시한다.
+class component는 class야 하지만 react component로 부터 확장되고 screen에 표시된다.
+그것을 render에 넣으면 된다. 자동적으로 모든 class component에서 render method를 실행하려고 하기 때문이다❗❗
+
+왜 function이 아니라 class에 대해 이야기하는 것일까❓
+
+바로 <b>state</b> 때문이다. state는 object이고 component의 data를 넣을 공간이 있고 이 데이터는 변한다.
+이때 예를들어 
+
+state = {
+  count : 0
+};
+이라고 하였다면 그 뒤에
+render() {
+  return <div>I like {this.state.count}</div>
+} 라고 해줘야한다.
+
+즉❗ 이것은 state object안의 count라는 element인 것이다.
+
+add = () => {
+    console.log("add);
+} 
+button에는 onClick={}가 있다 이것은 react Magic이다. 즉 javascript에서는 추가적으로 더 해줄 것들이 있다.
+onClick={this.add} 를 하게되면 버튼을 click했을 때 add function이 실행되게 된다.
+
+3 - 1.state add💥
+
+why❓ 직접 state를 변경하지 말라는 소리를 하는 것일까❓
+그럼 render()를 실행하지 않기 때문이다.
+내 state를 바꾸고 싶지만 모든것을 render해주길 바란다.
+그럼 this.setState()를 해줘야 한다.
+
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState({count: 1}) // 즉 State를 열어서 count를 1로 바꿔주고 닫는다.
+  };
+  minus = () => {
+    this.setState({count : -1})
+  };
+이렇게 setState를 ㅎ출하게되면 react는 state를 refrest하고 또한 render function을 호출 할 것이다.
+
+이때 button을 눌러주게되면 react는 똑똑해서 변화가 있는 부분만 update를 할 것이다.
+처음에 칠했던 virtual DOM을 가지고 있기 때문에 매우 빠르게 변경할 수 있고, 깜박거리지도 않는다.
+우리가 setState를 사용하지 않으면 새 state와 함께 render method가 실행되지 않을 것이다.
+
+현재 값에다가 + , - 를 해주기 위해서는 어떻게 해야할까❓
+count: this.state.count - 1 or count: this.state.count + 1 을 해주면 된다.
+But❗❗ 이것은 Good Code가 아니다. 
+why❓ 너무 state에 의존하기 때문이다. 더 나은 방법은 나중에 더 알수 있을 것이다.
+
+React는 function방식으로 현재 state를 가져올게 할 수 있다.
+this.setState(current => ({ count: current.count + 1 }))
+이것이 우리가 state를 set할 때 react에서 외부의 상태에 의존하지 않는 가장 좋은 방법이다.
+이 방법은 2019 ~ 2021에 최고의 방법이라고 할 수 있다.
+
+이제 this.setState()를 할때마다 React는 새로운 state를 받고 render method를 실행할 것이다.
+오로지 setState를 호출 했을 경우에 말이다.
+
+3-2 Component의 Life Cycle
+component, react class component는 render 말고도 다양한 것들을 가지고 있다.
+바로 life cycle method이다. 기본적으로 component를 생성하고 없애는 것이다.
+
+render 전후로 호출되는 method들이 존재한다.
+1.Mounting: 태어나는 것과 같다.
+2.Unmounting: 죽는것과 같다. component들은 페이지가 교체될때 죽는다고 할 수 있다.
+3.Updating: 일반적인 업데이트
+
+즉 render전후로 호출되는 경우에는 순서가 정해져 있기 때문에 자신이 code의 순서를 바꿔 적어도
+정해진 순서대로 실행이 될것이다.
+
+componentDidMount()✨
+예를들어 constructor - static getDerivedStateFromProps() - render() - componentDidMount() 순서이다.
+static getDerivedStateFromProps는 잘 사용되지 않으므로 조금 천천히 알아봐도 될 것이다.
+
+componentDidUpdate()✨
+update는 사용자가 어떠한 행동을 하였기 때문에 실행되는 것이다.
+update에도 순서가 있는데 그중 우선적으로 알아두어야 할것은 render - componentDidUpdate이다.
+이후에 button을 눌럿 this.setStat를 호출하게 되면 render method를 실행하고 componentDidUpdate를 실행할 것이다.
+
+componentWillUnmount()✨
+unmount 즉 component가 죽을 때 실행되는 함수이다.
+
+3-2 Planning the Movie Component💥
+
+이론적으로 우리가 할 것은 render method가 호출되기 전에 componentDidMount에서 date를 fetch하는 것이다.
+API에서 date fetch가 완료되면 movie를 render하고 map을 만들고 movie를 render를 할 것이다.
+state안에 movies의 array를 만들어놓는 것은 필수는 아니다 그러나 좋은 습관이다.
+중간에서 추가해도 에러가 발생하진 않는다.
