@@ -1,0 +1,60 @@
+json을 통해 date를 받아오지만 이를 const로 잡아줘야 state를 사용할 수 있다.
+
+1.javascript에게 componentDidMount함수가 끝날때까지 약간 시간이 걸리기 때문에 그걸 기다리라고 명령해줘야한다.
+2.getMovies 라는 함수를 만들어주고 호출할때 기다리라고 async() 즉 비동기라고 설정해주고 안쪽에서 await를 추가시켜줘야한다.
+
+getMovies = async() =>  {
+    const movies = await axios.get("주소");
+}
+componentDidMount() {
+    this.getMoves();
+}
+이렇게 될 것이다.
+
+💥async를 사용하지 않으면 await라는 keyward를 사용하지 못한다.
+
+
+API에서 movies를 받아왔다면❓
+받은 moves를 state안에 넣어주고 그것을 render를 통해 화면에 띄어줄것이다.
+
+Movies.js라는 file을 만들었다. 이 file에서 React,PropTypes를 받아 올 것이다.
+이때 stater가 필요하지 않기 때문에 class가 아니라 function을 사용할 것이다.
+Movie라는 function에서 props의 특정값을 가져올 것이기 때문에 curly bracket으로 감싸준다.
+
+ex)
+function Movies(id,year,....) (x)
+function Movies({id, year, ....}) (o)
+
+Movie함수를 호출하게 되면 이 특정값들로 html코드를 통해서 return 받을 것이다.
+
+그렇다면 이 Movie라는 함수를 사용하는 곳은 어디인가❓
+앞서 배운것처럼 App.js라는 파일에서 호출될 것이다.
+App.js로 가보겠다.
+
+App.js파일에서는 React,axios,Movie라는 함수들을 받아올것이고
+그것들을 이용해서 state값을 사용할 것이기 때문에 function이 아닌 classs를 사용한다.
+state를 통해 로딩이 완료 되었는지에 따라 변화하는 isLoading이 존재하고 (초깃값 true, 완료되면 false)
+movies라는 빈 array가 있을 것이다.
+
+getMovies함수는 APi에서 date들을 받아와서 저장하는 부분이다.
+이 때 비동기로 함수를 지정해줘야한다. 
+
+why❓ 
+1.axios로 data를 받아오고나서 실행이 되야하기 때문이다.
+2.componentDidMount()가 먼저 실행이 되야하기 때문이다.
+
+date를 가져오게 되면 setState를 통해 state의 값을 변경해준다.
+그후 render()함수로 가게되는데 이부분에서 isLoading과 movies를 state에서 가져온다.
+그리고 함수이기 때문에 return을 받게되는데 ES6문법인 3항 조건 연산자를 통해 state에서 가져온 isLoading값이 true라면
+"Loading..." 이라는 문자를 화면에 출력하고 그렇지 않으면 (즉, date를 모두 받아왔으면) 앞서 만들어 놓은 Movie.js 파일에서 받아온
+Movie() function을 호출한다. 이때 key,id,year,title,summary,poster등등을 지정해 주어야 하는데
+이 값들은 getMovies함수의 API를 통해 받아온 movies라는 배열에 담긴 데이터들에 각각의 element에 function을 적용하는
+map을 사용할 것인데 이떄 사용되는 함수가 바로 Movie함수이다.
+
+즉 결과적으로 내가 이해한 순서를 설명하자면 이렇다.
+1.getMovies()로 state에 API에서 받아온 date를 저장한다.
+2.render()를 통해 state에 저장된 데이터들, 예를 들어 20개의 영화들에 대한 정보를 
+map method를 통해서 각각의 영화들의 정보를 화면에 출력하는 Movie 함수를 실행한다.
+3.Movie.js에서 받아온 Movie()를 통해서 내가 정해놓은 명령을 수행한다.
+
+
