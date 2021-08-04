@@ -1,0 +1,8 @@
+React의 새로운 부분이자 아직 배우지 않은 부분들이 존재한다.
+
+1.react hook❗
+더이상 state를 갖기 위해서 class compoenent를 가질 필요가 없다.
+그러나 이것은 대체물이 아니다. 즉 class compoenent가 필요없는 구식이 아니라는 것이다.
+Reack hook 강의를 들어보아야 할 것이다.
+
+2.안드로이드와 ios에서 React를 사용하고 싶다면 React Native로 날씨앱 만들기 수업을 들어보자.

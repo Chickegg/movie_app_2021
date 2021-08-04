@@ -1,0 +1,17 @@
+
+npm run build를 하게 된다면 어떤일 벌어질까❓
+바로 buil라는 folder가 생성된다. 그 안에는 우리가 작업한 것들을 최소화해서 존재한다.
+우리는 그 폴더를 gh-pages에 upload할 것이다. 
+
+그런다음 predeploy또한 만들어준다.
+"predeploy": "npm run build";
+npm은 똑똑해서 기본적으로 deploy를 호출할 때마다 predeploy를 먼저 실행할 것이다.
+deploy는 gh-pages를 호출하고 build폴더를 upload할 것이다.
+
+요약✨
+
+1.gh-pages를 설치한다.
+2.package.JSON에 homepage를 넣어준다. 주소는 "https://나의ID.github.io/프로젝트이름/" 이다.
+3-1. deploy라는 명령어를 만들어준다. (deploy는 build folder를 upload 하는 것이다.)
+3-2. predeploy라는 명령어를 만들어준다. (predeploy는 deploy가 실행될때마다 먼저 npn run build를 실행하여 build폴더를 얻는 것이다.)
+
