@@ -1,0 +1,24 @@
+React에서는 역시 마찬가지로 HTML에 CSS를 사용 할 수 있다.
+
+
+1번째 방법👏
+React에서는 css를 좀더 편안하게 사용할 수 있다.
+style component라는 것이 있기 때문이다.
+그러나 이 방법은 그렇게 좋은 방법이 아니다.
+
+ex)
+<h3 class="dsf" style={{backgounrdColor = "red"}} 이렇게말이다.
+JavScript에서는 띄어쓰기가 대문자로 표시된다는것을 알면 이해하기 편하다.
+
+2번째 방법👍
+별도의 css파일을 만들어서 불러오는 방법.
+이 방법이 좋은 이유는 css파일의 내용만을 바꿈으로써 여러종류의 속성을 바꿀수있다?
+
+
+왜 genres가 undefined라고 되어있을까?
+index.js에서 props에 추가를 안시켜줬기때문이다. 추가를 시키고 나니깐
+DOM에 class 문제가 생긴다. 이것은 HTML이 아니라 JSX문법이기 때문이다.
+javascript class 안에 있으면 compoenent class에 의해 혼란스러워진다. 이것을 기억해야 한다.
+
+이 때 map의 각 항목에는 키가 다시 필요합니다.
+map() 함수는 다른 인수를 제공한다. 그것은 바로 index이다.
