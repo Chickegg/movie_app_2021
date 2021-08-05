@@ -1,0 +1,38 @@
+즉 react-router에 의한 component에는 props가 존재한다.
+
+나는 이것드을 사용할 수 있다.
+덕분에 클릭한번으로 정보를 전달할 수 있다.
+우리가 movie를 클릭하면 movie 디테일 페이지로 갈 것인데 우리는 여기에 모든 데이터를 넣을 것이다.
+
+바로 <Link> 에서 to의 string을 object로 이럴 경우에는 pathname과 stat를 정의할 것이다.
+
+
+여기서 영화의 부분은 movie.js부분에서 담당한다.
+모든 글자를 Link로 만들고 to부분은 object로 설정한다면
+pathname: ./asdfadfasdf 이고,
+state: {
+    title, name 등등등 으로 말이다.
+}
+
+즉 우리가 링크를 누르면 react router는 pathname으로 우리를 데려가고 App.js의 Route를 통해서 url이 내가 정해놓은 "/movie-detail"이 만족함으로 component를 실행한다.
+Detail component는 props를 이용하는데 여기서 props는 우리가 movie.js에서 가져온 state등이 될 것이다.
+
+전체요약🚀
+1.처음에 localhost:3000/으로 들어오게 되면 Route에 의해서 url이 /이 포함되므로 Home component를 실행한다.
+2.react에 API에서 받아온 data들로 이루어진 state를 사용해서 화면에 render한다.
+3.이떄 movie component를 호출하게 되고 링크로 감싸진 css파일이 적용된 html코드를 return 받는다.
+4.우리가 만약 div.movie부분의 Link를 누르게 되다면 react router에서 사용되는 Link to 부분의 object를 통해서 url이 변경이 될것이다.
+5.pathname은 "./movie-datail"이고 그곳에 전달될 props는 설정해놓은 year,title,summary,poster,genres등등이 될것이다.
+6.App.js로 돌아가 url이 일치하는 경우가 발생하게 된다. 그것은 바로 "/movie-detail" 그렇기 때문에 Detail component가 호출된다.
+7.Detail component에서는 우리가 Movie component에서 받아온 props들을 통해서 또 새로운 작업이 이루어질 것이다.
+
+💥CSS 문제가 발생할 것이다💥
+이는 Link tag는 ReactDOM에 의해서 a tag로 변환되서 보여진다.
+그렇기 때문에 display:contents -> container를 사라지게하여서 DOM에서 다음 단계의 하위 요소를 생성한다.
+
+ex)
+.movies a {
+    dispaly:contents;
+    text-decoration:none;
+} 를 CSS에 추가시켜 주면 된다.
+
