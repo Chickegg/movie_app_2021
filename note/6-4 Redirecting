@@ -1,0 +1,17 @@
+history에는 많은 것들이 존재한다. 
+go, goBack,goFoward 이런것들이 url을 변경한다.
+
+그뜻은 웹사이트가 어디있는지 장소를 변경할 수 있다는 것이다.
+
+
+우리는 state값이 비어있을 때 home 화면으로 리다이렉팅시키는 작업을 할 것이다.👍
+props의 history부분을 가지고와서 sate가 undefined라면 
+history.push("/"); 이렇게하면 홈으로 돌아간다. 
+
+class의 경우 render가먼저 돌아가고 그 후에 componentDidMount가 돌아가기 때문에
+location이 undefined라면 return null을 해주고 
+그렇지 않다면 return<span>{location.state.title}</span>을 해준다.
+즉 제목을 화면에 띄워주는 것이다.
+
+각 영화마다 url을 다르게 해주고 싶다면
+pathname을 movie-detail에서 movie/:id값으로 받아오면된다.
